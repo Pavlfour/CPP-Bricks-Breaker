@@ -33,5 +33,6 @@ class Game
         int winnerWidth{MeasureText("Winner!!",100)};
         int score{0};
         bool ballLaunched{false};
-        
+        //added code
+        float diffX,diffY,angle;
 };
