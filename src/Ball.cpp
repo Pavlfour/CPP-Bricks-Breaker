@@ -14,11 +14,13 @@ void Ball::update()
     if(x-radius <= 0.0f || x+radius >= float(GetScreenWidth()))
     {
         speedX *= -1.005f;
+        speedY *= 1.005f;
         PlaySound(soundBall);
     }
     if(y-radius <= 0.0f)
     {
         speedY *= -1.005f;
+        speedX *= 1.005f;
         PlaySound(soundBall);
     }
 }
