@@ -11,6 +11,4 @@ class Brick{
 
         //methods
         void draw();
-        Rectangle rectCollisionCheck();
-
 };
