@@ -114,9 +114,13 @@ void Game::update()
                     if((ball.x <= paddle.x) || (ball.x >= paddle.x+paddle.width))
                     {
                         ball.speedX *= -1.01f;
+                        ball.speedY *= 1.01f;
                     }
                     else
+                    {
                         ball.speedY *= -1.01f;
+                        ball.speedX *= 1.01f;
+                    }
                     PlaySound(soundBall);
                     lastTime = GetTime();
                 }
@@ -134,8 +138,15 @@ void Game::update()
                         PlaySound(soundBall);
 
                         if(ball.x <= ball.radius+brick.x || ball.x >= ball.radius+brick.width+brick.x)
+                        {
                             ball.speedX *= -1.01f;
-                        else ball.speedY *= -1.01f;
+                            ball.speedY *= 1.01f;
+                        }
+                        else 
+                        {
+                            ball.speedY *= -1.01f;
+                            ball.speedX *= 1.01f;
+                        }
 
                     brick.isAlive = false;
                     score++;
