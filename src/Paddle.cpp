@@ -12,8 +12,8 @@ void Paddle::update()
     if(IsKeyDown(KEY_LEFT))
     {
         x -= speed;
-        if(x <= 0.0) //check if the paddle collides with the left side of the screen
-            x = 0.0;
+        if(x <= 0.0f) //check if the paddle collides with the left side of the screen
+            x = 0.0f;
     }
     else if(IsKeyDown(KEY_RIGHT))
     {
