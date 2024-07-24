@@ -113,10 +113,10 @@ void Game::update()
                     //check which side of the paddle was collided with the ball
                     if((ball.x <= paddle.x) || (ball.x >= paddle.x+paddle.width))
                     {
-                        ball.speedX *= -1.01;
+                        ball.speedX *= -1.01f;
                     }
                     else
-                        ball.speedY *= -1.01;
+                        ball.speedY *= -1.01f;
                     PlaySound(soundBall);
                     lastTime = GetTime();
                 }
@@ -134,8 +134,8 @@ void Game::update()
                         PlaySound(soundBall);
 
                         if(ball.x <= ball.radius+brick.x || ball.x >= ball.radius+brick.width+brick.x)
-                            ball.speedX *= -1.01;
-                        else ball.speedY *= -1.01;
+                            ball.speedX *= -1.01f;
+                        else ball.speedY *= -1.01f;
 
                     brick.isAlive = false;
                     score++;
@@ -170,16 +170,16 @@ void Game::update()
             //draw launch line
             DrawLine(int(paddle.x+paddle.width/2.0f),
             int(paddle.y-ball.radius),
-            int(paddle.x+paddle.width/2.0f+100.0*cos(angle)), //using tangent to calculate the angle between mouse and ball
-            int(paddle.y-ball.radius+100.0*sin(angle)),
+            int(paddle.x+paddle.width/2.0f+(100.0f)*cos(angle)), //using tangent to calculate the angle between mouse and ball
+            int(paddle.y-ball.radius+(100.0f)*sin(angle)),
             WHITE);
 
 
             if(IsKeyDown(KEY_SPACE))
             {
                 ballLaunched=true;
-                ball.speedX = 1.03*cos(atan2(diffY,diffX));
-                ball.speedY = 1.03*sin(atan2(diffY,diffX));
+                ball.speedX = (1.03f)*cos(angle);
+                ball.speedY = (1.03f)*sin(angle);
                 PlaySound(startLaunch);
             }
         }
