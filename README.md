@@ -1,5 +1,7 @@
 # CPP-Bricks-Breaker
-A version of the Bricks Break famous game using C++ and raylib library.
+
+A version of the Bricks Breaker famous game using C++ and Raylib Library.
+
 You can find the link to the library here 👉https://www.raylib.com/
 
 
