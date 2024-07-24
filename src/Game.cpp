@@ -163,16 +163,15 @@ void Game::update()
 
             //get mouse coordinates
             mousePosition = GetMousePosition();
-            int diffX = int(mousePosition.x) - int(paddle.x+paddle.width/2.0f);
-            int diffY = int(mousePosition.y) - int(paddle.y-ball.radius);
-
+            diffX = (mousePosition.x - (paddle.x+paddle.width/2.0f));
+            diffY = (mousePosition.y - (paddle.y-ball.radius));
+            angle = atan2(diffY,diffX);
 
             //draw launch line
-
             DrawLine(int(paddle.x+paddle.width/2.0f),
             int(paddle.y-ball.radius),
-            int(paddle.x+paddle.width/2.0f+100.0*cos(atan2(diffY,diffX))), //using tangent to calculate the angle between mouse and ball
-            int(paddle.y-ball.radius+100.0*sin(atan2(diffY,diffX))),
+            int(paddle.x+paddle.width/2.0f+100.0*cos(angle)), //using tangent to calculate the angle between mouse and ball
+            int(paddle.y-ball.radius+100.0*sin(angle)),
             WHITE);
 
 
