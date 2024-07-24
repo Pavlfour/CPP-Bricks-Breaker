@@ -158,7 +158,7 @@ void Game::update()
         }
         else
         {
-            ball.x = paddle.x+paddle.width/2.0;
+            ball.x = paddle.x+paddle.width/2.0f;
             ball.y = paddle.y-ball.radius;
 
             //get mouse coordinates
