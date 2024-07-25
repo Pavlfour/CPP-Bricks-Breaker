@@ -11,7 +11,4 @@ You also need to have installed this extension in Visual Studio Code👇
 ![Screenshot 2024-07-25 120409](https://github.com/user-attachments/assets/e067633d-dc1c-4421-ab11-9feae6d8c87a)
 
 
-
-
-Game preview
 ![project](https://github.com/user-attachments/assets/66bcd76b-bcb4-46d6-9665-74a1b6dc8ce9)
