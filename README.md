@@ -20,4 +20,5 @@ You also need to have installed this extension in Visual Studio Code👇
 
 ---
 
+I improved the physics of the collision between the paddle and the ball.
 ![Screenshot 2024-07-29 083425](https://github.com/user-attachments/assets/6691c891-a586-4b2e-b275-a87f50e463e2)
