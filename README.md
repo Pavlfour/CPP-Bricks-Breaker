@@ -22,7 +22,7 @@ Old Version
 
 New Version
 
-<iframe src="https://giphy.com/embed/hwRquIZpG89SqLeVjk" width="480" height="478" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/hwRquIZpG89SqLeVjk">via GIPHY</a></p>
+https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHNkaW40cDJvMWoweDllYTBrdGVqc2hzdzJ6YjZqM3dvem5ydmM5dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hwRquIZpG89SqLeVjk/g.gif
 
 ---
 
