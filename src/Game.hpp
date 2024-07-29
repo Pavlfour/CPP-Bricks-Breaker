@@ -1,23 +1,17 @@
 #pragma once
 #include <vector>
 #include <cmath>
-using namespace std;
 #include "Brick.hpp"
 #include "Paddle.hpp"
 #include "Ball.hpp"
+using namespace std;
 
-
+//this class works as the main control of the game
 class Game
 {
+
     public:
-
-        //methods
-        Game();
-        void update();
-        void draw();
-
-    
-        //attributes
+   
         Sound soundGameOver{LoadSound("sounds/game_over.wav")};
         Sound startLaunch{LoadSound("sounds/start.wav")};
         Sound winnerSound{LoadSound("sounds/win.wav")};
@@ -26,13 +20,12 @@ class Game
         Paddle paddle;
         Ball ball;
         Vector2 mousePosition;
-        bool winner{false};
         double lastTime;
-        bool touchedBottom{false};
-        int gameOverWidth{MeasureText("Game Over",100)};
-        int winnerWidth{MeasureText("Winner!!",100)};
-        int score{0};
-        bool ballLaunched{false};
-        //added code
-        float diffX,diffY,angle;
+        bool touchedBottom{false},winner{false},ballLaunched{false};
+        int winnerWidth{MeasureText("Winner!!",100)},gameOverWidth{MeasureText("Game Over",100)},score{0},lives{3};
+        float diffX,diffY,angle,ballSpeed;
+
+        Game();
+        void update();
+        void draw();
 };
