@@ -83,7 +83,9 @@ Game::Game()
 
 void Game::draw()
 {
-    DrawText(TextFormat("%i",score),20,GetScreenHeight()-50,50,WHITE); //showing the score
+    //testing code below
+    DrawText(TextFormat("Score %i",score),20,GetScreenHeight()-40,30,GREEN); //showing the score
+    //DrawText(TextFormat("Lives"),GetScreenWidth()-120,GetScreenHeight()-40,30,GREEN); //showing lives
     ball.draw();
     paddle.draw();
     //iteration to draw the bricks from the vector
@@ -91,10 +93,9 @@ void Game::draw()
         brick.draw();
 }
 
-
-
 void Game::update()
 {
+
     if(!touchedBottom && !winner)
     {
 
@@ -107,19 +108,29 @@ void Game::update()
             //check ball and paddle if they collide with each other
             if(CheckCollisionCircleRec(Vector2{ball.x,ball.y},ball.radius,Rectangle{paddle.x,paddle.y,paddle.width,paddle.height}))
             {
-                if(GetTime()-lastTime >=0.20) //to avoid the horizontal glitch between ball and paddle
+                //added time to avoid the horizontal glitch between ball and paddle
+                if(GetTime()-lastTime >=0.20) 
                 {
                     PlaySound(soundBall);
+
                     //check which side of the paddle was collided with the ball
-                    if((ball.x <= paddle.x) || (ball.x >= paddle.x+paddle.width))
+                    if((ball.x + ball.radius/2.0f < paddle.x) || (ball.x - ball.radius/2.0f > paddle.x+paddle.width))
                     {
                         ball.speedX *= -1.01f;
                         ball.speedY *= 1.01f;
                     }
                     else
                     {
-                        ball.speedY *= -1.01f;
-                        ball.speedX *= 1.01f;
+                        //finding the x difference between ball and the paddle
+                        diffX = ball.x - (paddle.x+paddle.width/2.0f);
+                        //calculating the ball's overall speed
+                        ballSpeed = sqrt(pow(ball.speedX,2.0)+pow(ball.speedY,2.0));
+
+                        //scalar
+                        diffX *= (PI/(paddle.width+20.0f));
+                        //use all the above the determine the direction of the ball after collision with the paddle
+                        ball.speedY = -1.01f * (ballSpeed * sin(PI/2.0f - diffX));
+                        ball.speedX = 1.01f * (ballSpeed * cos(PI/2.0f - diffX));
                     }
                     PlaySound(soundBall);
                     lastTime = GetTime();
@@ -136,8 +147,8 @@ void Game::update()
                     {
 
                         PlaySound(soundBall);
-
-                        if(ball.x <= ball.radius+brick.x || ball.x >= ball.radius+brick.width+brick.x)
+                        //changing direction and speed of the ball
+                        if((ball.x + ball.radius/2.0f < brick.x) || (ball.x - ball.radius/2.0f > brick.width+brick.x))
                         {
                             ball.speedX *= -1.01f;
                             ball.speedY *= 1.01f;
@@ -147,8 +158,9 @@ void Game::update()
                             ball.speedY *= -1.01f;
                             ball.speedX *= 1.01f;
                         }
-
+                    //change the specific's live status to false
                     brick.isAlive = false;
+
                     score++;
                     if(score==78)
                     {
@@ -169,6 +181,7 @@ void Game::update()
         }
         else
         {
+            //we are at the launch state here
             ball.x = paddle.x+paddle.width/2.0f;
             ball.y = paddle.y-ball.radius;
 
@@ -176,19 +189,20 @@ void Game::update()
             mousePosition = GetMousePosition();
             diffX = (mousePosition.x - (paddle.x+paddle.width/2.0f));
             diffY = (mousePosition.y - (paddle.y-ball.radius));
+            //using tangent to calculate the angle between mouse and ball
             angle = atan2(diffY,diffX);
-
             //draw launch line
             DrawLine(int(paddle.x+paddle.width/2.0f),
             int(paddle.y-ball.radius),
-            int(paddle.x+paddle.width/2.0f+(100.0f)*cos(angle)), //using tangent to calculate the angle between mouse and ball
-            int(paddle.y-ball.radius+(100.0f)*sin(angle)),
+            int(paddle.x+paddle.width/2.0f+(170.0f)*cos(angle)), 
+            int(paddle.y-ball.radius+(170.0f)*sin(angle)),
             WHITE);
 
-
+            //launch the ball with Spacebar
             if(IsKeyDown(KEY_SPACE))
             {
                 ballLaunched=true;
+                //initial speed of the ball
                 ball.speedX = (1.03f)*cos(angle);
                 ball.speedY = (1.03f)*sin(angle);
                 PlaySound(startLaunch);
@@ -198,12 +212,12 @@ void Game::update()
     }
     else if(winner)
     {
-        DrawText("Winner!!",GetScreenWidth()/2-winnerWidth/2+4,GetScreenHeight()/2,100,{ 119, 179, 0 ,200}); //outline
+        DrawText("Winner!!",GetScreenWidth()/2-winnerWidth/2+3,GetScreenHeight()/2,100,{ 119, 179, 0 ,200}); //outline
         DrawText("Winner!!",GetScreenWidth()/2-winnerWidth/2,GetScreenHeight()/2,100,{ 253, 249, 0, 255 }); //yellow
     }
     else
     {
-        DrawText("Game Over",GetScreenWidth()/2-gameOverWidth/2+4,GetScreenHeight()/2,100,{ 119, 179, 0 , 200}); //outline
+        DrawText("Game Over",GetScreenWidth()/2-gameOverWidth/2+3,GetScreenHeight()/2,100,{ 119, 179, 0 , 200}); //outline
         DrawText("Game Over",GetScreenWidth()/2-gameOverWidth/2,GetScreenHeight()/2,100,{ 253, 249, 0, 255 }); //yellow
     }
 }
