@@ -3,16 +3,17 @@
 
 int main()
 {
-
-    SetConfigFlags(FLAG_VSYNC_HINT); //synchronized game frame rate with screen frame rate
+    //synchronized game frame rate with screen frame rate
+    SetConfigFlags(FLAG_VSYNC_HINT);
 
     InitWindow(805,800,"Bricks Breaker");
     InitAudioDevice();
 
-
     //positioning the window to the center of the monitor
-    SetWindowPosition((int)(GetMonitorWidth(GetCurrentMonitor()) / 2) - (int)(805 / 2), (int)(GetMonitorHeight(GetCurrentMonitor()) / 2) - (int)(800 / 2));
+    SetWindowPosition((int)(GetMonitorWidth(GetCurrentMonitor()) / 2) - (int)(805 / 2),
+    (int)(GetMonitorHeight(GetCurrentMonitor()) / 2) - (int)(800 / 2));
 
+    //initializing game object
     Game game;
 
     while(!WindowShouldClose())
@@ -20,10 +21,8 @@ int main()
         BeginDrawing();
         ClearBackground(BLACK);
 
-        //initializing
         game.update();
         game.draw();
-        
 
         EndDrawing();
     }
