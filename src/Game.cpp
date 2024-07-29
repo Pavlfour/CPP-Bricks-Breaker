@@ -83,9 +83,8 @@ Game::Game()
 
 void Game::draw()
 {
-    //testing code below
-    DrawText(TextFormat("Score %i",score),20,GetScreenHeight()-40,30,GREEN); //showing the score
-    //DrawText(TextFormat("Lives"),GetScreenWidth()-120,GetScreenHeight()-40,30,GREEN); //showing lives
+    //showing the score
+    DrawText(TextFormat("Score %i",score),20,GetScreenHeight()-40,30,GREEN); 
     ball.draw();
     paddle.draw();
     //iteration to draw the bricks from the vector
