@@ -7,11 +7,11 @@ I do not own any of the no-copyright sound effects added to the game.
 
 ---
 
-You can find the link to the library here 👉https://www.raylib.com/
+You can find the link to the library here. 👉https://www.raylib.com/
 
 ---
 
-You also need to have installed this extension in Visual Studio Code👇
+You also need to have installed this extension in Visual Studio Code. 👇
 ![Screenshot 2024-07-25 120409](https://github.com/user-attachments/assets/e067633d-dc1c-4421-ab11-9feae6d8c87a)
 
 ---
@@ -26,6 +26,6 @@ New Version
 
 ---
 
-I improved the physics of the collision between the paddle and the ball. Here i tried to give some explanation, just an example to figure out how it works 😀
+I improved the physics of the collision between the paddle and the ball. Here i tried to give some explanation, just an example to figure out how it works. 😀
 
 ![Screenshot 2024-07-30 201140](https://github.com/user-attachments/assets/02c13cac-12fb-4356-8779-419aae79c174)
