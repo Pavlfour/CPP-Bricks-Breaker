@@ -26,5 +26,6 @@ New Version
 
 ---
 
-I improved the physics of the collision between the paddle and the ball.
-![Screenshot 2024-07-29 083425](https://github.com/user-attachments/assets/6691c891-a586-4b2e-b275-a87f50e463e2)
+I improved the physics of the collision between the paddle and the ball. Here i tried to give some explanation, just an example to figure out how it works 😀
+
+![Screenshot 2024-07-30 201140](https://github.com/user-attachments/assets/02c13cac-12fb-4356-8779-419aae79c174)
