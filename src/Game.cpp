@@ -127,7 +127,7 @@ void Game::update()
 
                         //scalar
                         diffX *= (PI/(paddle.width+20.0f));
-                        //use all the above the determine the direction of the ball after collision with the paddle
+                        //use all the above to determine the direction of the ball after collision with the paddle
                         ball.speedY = -1.01f * (ballSpeed * sin(PI/2.0f - diffX));
                         ball.speedX = 1.01f * (ballSpeed * cos(PI/2.0f - diffX));
                     }
@@ -147,7 +147,7 @@ void Game::update()
 
                         PlaySound(soundBall);
                         //changing direction and speed of the ball
-                        if((ball.x + ball.radius/2.0f < brick.x) || (ball.x - ball.radius/2.0f > brick.width+brick.x))
+                        if((ball.x + ball.radius <= brick.x) || (ball.x - ball.radius >= brick.x + brick.width))
                         {
                             ball.speedX *= -1.01f;
                             ball.speedY *= 1.01f;
