@@ -88,7 +88,7 @@ void Game::draw()
     ball.draw();
     paddle.draw();
     //iteration to draw the bricks from the vector
-    for(Brick brick:bricks)
+    for(Brick &brick:bricks)
         brick.draw();
 }
 
