@@ -147,7 +147,7 @@ void Game::update()
 
                         PlaySound(soundBall);
                         //changing direction and speed of the ball
-                        if((ball.x + ball.radius <= brick.x) || (ball.x - ball.radius >= brick.x + brick.width))
+                        if((ball.x + ball.radius < brick.x + 1.0f) || (ball.x - ball.radius > brick.x + brick.width - 1.0f))
                         {
                             ball.speedX *= -1.01f;
                             ball.speedY *= 1.01f;
